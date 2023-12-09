@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles/style.css">
+      <script src="https://kit.fontawesome.com/33c3fc8b29.js" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <title>Principal</title>
+   </head>
+   <body style="background-color: black;">
+      <nav id="contenedor-search">
+         <div id="logonav">
+            <div id="logonavprincipal">
+               <div class="logo">
+                  <img src="assets/img/Logomorado.png" alt="">
+               </div>
+               <label for="search" class="search-label">
+                  <div class="lupita">
+                     <i class="fa-solid fa-magnifying-glass"></i>
+                  </div>
+                  <input type="search" name="" id="search"  placeholder="Buscar en Pro Code" style="color: black;" >
+               </label>
+               <div class="opcion-user">
+                  <i id = "userIcon" class="fa-solid fa-circle-user" ></i>
+               </div>
+            </div>
+      </nav>
+      <section class = "contenedor-carpetas">
+      <div class="infocarpetas">
+      <h1>Carpetas</h1>
+      </div>
+      <form>
+      <input type="button" value="Nombre de carpeta"><br>      
+      </form>
+      <form>
+      <input type="button" value="Nombre de carpeta"><br>
+      </form>
+      <form>
+      <input type="button" value="Nombre de carpeta"><br>
+      </form>
+      <form>
+      <button id = "botonCrearCarpeta" type ="button" >Nueva carpeta</button>
+      </form>
+      </section>
+      <section class = "contenedor-carpetas1">
+      <form>
+      <input type="buttonc" value="Nombre de carpeta"><br>
+      </form>
+      <form>
+      <input type="buttonc" value="Nombre de carpeta"><br>
+      </form>
+      <form>
+      <input type="buttonc" value="Nombre de carpeta"><br>
+      </form>
+      </div>
+      </section>
+      <script> 
+         const userIcon = document.getElementById("userIcon");
+         // Agregar el estilo del cursor al pasar por encima
+         userIcon.style.cursor = "pointer";
+
+         // Redirigir al hacer clic
+         userIcon.addEventListener("click", () => {
+             // Reemplaza 'tu_pagina_destino.html' con la URL de la página a la que quieres redirigir
+             window.location.href = "adminUser.html";
+         });
+         // Boton para crear una nueva carpeta
+         document.getElementById("botonCrearCarpeta").addEventListener("click", function () {
+             Swal.fire({
+                 title: "Nueva carpeta",
+                 input: "text",
+                 placeholder: "Carpeta sin título",
+                 showCancelButton: true,
+                 confirmButtonText: "Crear carpeta",
+                 cancelButtonText: "Cancelar",
+                 confirmButtonColor: "#6B38BB",
+                 cancelButtonColor: "#3C2267",
+                 customClass: {
+                     container: "mi-clase-prompt",
+                 },
+                 buttonStyling: true,
+             }).then((result) => {
+                 if (result.isConfirmed && result.value) {
+                     var nuevaCarpeta = document.createElement("div");
+                     nuevaCarpeta.textContent = result.value;
+                     document.body.appendChild(nuevaCarpeta);
+                     Swal.fire("Carpeta Creada", `Se creó la carpeta "${result.value}"`, "success");
+                     // lógica para crear la carpeta en tu aplicación
+                     // Llamada a tu servidor para crear la carpeta en el backend
+                 } else if (result.dismiss === Swal.DismissReason.cancel) {
+                     Swal.fire("Operación Cancelada", "No se creó la carpeta", "error");
+                 }
+             });
+         });
+      </script>
+      <script src="scripts/script.js"></script> 
+   </body>
+</html>

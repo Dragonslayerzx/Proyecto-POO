@@ -1,0 +1,50 @@
+//CRUD para usuarios
+### 
+POST http://localhost:3000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "usuario": "John Krasinski", 
+    "correo": "jhjhn@gmil.com", 
+    "password": "LOVEUPAM"
+}
+
+###
+GET http://localhost:3000/api/users HTTP/1.1
+
+###
+GET http://localhost:3000/api/users/65742467d3fb30c5595dfe50 HTTP/1.1
+
+###
+PUT http://localhost:3000/api/users/657431a2550c844c5d03b913 HTTP/1.1
+Content-Type: application/json
+
+{
+    "usuario": "John Krasinski", 
+    "correo": "aaza@hnmmail.com", 
+    "password": "fckUPAMela"
+}
+
+###
+DELETE http://localhost:3000/api/users/657436c01ce1abcaae2cb656 HTTP/1.1
+
+//Login usuarios
+### 
+POST http://localhost:3000/api/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "correo": "cartman@hotmail.com", 
+    "password": "LOVEUPAM"
+}
+
+// Admin usuarios
+### 
+PUT http://localhost:3000/api/users/admin HTTP/1.1
+Content-Type: application/json
+
+{
+    "usuario": "John Krasinski", 
+    "correo": "jhjhn@gmil.com", 
+    "password": "LOVEUPAM"
+}

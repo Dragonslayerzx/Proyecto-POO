@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+    crossorigin="anonymous">
+    <title>Landing</title>
+</head>
+<body style="background-color: black;">
+    <nav id="navprincipal">
+        <div id="logonav">
+            <div id="logonavprincipal">
+                <div class="logo">
+                    <img src="assets/img/Logonegro.png" alt="">
+                </div>
+            </div>
+            <button type="button" onclick="getLogin()" id="loginboton">INICIAR SESIÓN</button>
+            <button type="button" onclick="getRegister()" id="registroboton">REGISTRARSE</button>
+        </div>
+    </nav>
+
+    <section class="contenedor-bienvenida">
+        <div id="bienvenida"><h1>Te damos la bienvenida a</h1></div>
+        <div class="logomorado">
+            <img src="assets/img/Logomorado.png" alt="" id="imglogomorado">
+        </div>
+        <div class="contenedorb1">
+            <p>Un espacio en el que puedes organizarte,<br> crear, programar y compartir tus archivos.<br><br> Crea tu cuenta o inicia sesión.</p>
+        </div>
+        <div id="contenedor-cel">
+            <img src="assets/img/cel.jpg" id="imgcel">
+        </div>
+    </section>
+
+    <section class = "contenedor-bienvenida">
+        <div class="info">
+            <h3>Realiza código en HTML, CSS <br> y Javascript</h3><br>
+            <p> Explota tu creatividad dándole<br>vida a tus ideas!</p>
+        </div>
+        <div id = "contenedor-cel">
+            <img src="assets/img/Landingcomp.png" id="laptopimg">
+        </div>
+        
+    </section>
+
+    <section class = "contenedor-info">
+        <div class="info2">
+            <h3>Crea archivos y compártelos</h3><br>
+            <p>Puedes realizar la creación de diversos<br>proyectos y compartirlos con diferentes <br> usuarios en tiempo real y de manera<br> rápida y eficaz.</p>
+            <img src="assets/img/Landing.jpg" id="info2img">
+        </div>
+    </section>
+    
+    <section class = "contenedor-bienvenida">
+        <div class="info">
+            <h3>Organiza tus proyectos</h3><br>
+            <p>Realiza tu propio sistema de <br> organización y elabora<br> carpetas lógicas para la <br> estructuración de tus<br>archivos</p>
+        </div>
+        <div id = "contenedor-cel">
+            <img src="assets/img/Landingcarp.png" id="foldersimg">
+        </div>
+        
+    </section>
+
+    <section class = "contenedor-planes">
+        <h3>Elige el plan de tu preferencia<br><br> Escoge el plan que más se adapate a lo <br> que necesitas.
+        </h3>
+        <div class="planes">
+            <div class="plan">
+                <h2>Permanecer en el<br>modo gratuito</h2><br>
+                <p>Incluye: </p><br>
+                <p>&bull; Creación de 10<br>proyectos.</p><br>
+                <p>&bull; 3 colaboraciones con<br>otro usuarios.</p><br>
+                <a href="#" id="botonplan1" class="boton">ELIGE ESTE PLAN</a>
+            </div>
+            <div class="plan">
+                <h2>Obtener la versión del<br>basic mode</h2><br>
+                <p>Incluye: </p><br>
+                <p>&bull; Creación de 15<br>proyectos.</p><br>
+                <p>&bull; 10 colaboraciones con<br>otro usuarios.</p><br>
+                <a href="#" id="botonplan2" class="boton">ELIGE ESTE PLAN</a>
+            </div>  
+            <div class="plan">
+                <h2>Obtener la versión<br>premium</h2><br>
+                <p>Incluye: </p><br>
+                <p>&bull; Creación de 30<br>proyectos.</p><br>
+                <p>&bull; 30 colaboraciones con<br>otro usuarios.</p><br>
+                <a href="#" id="botonplan3" class="boton">ELIGE ESTE PLAN</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="landingfooter">
+        <div class="logo">
+            <img src="assets/img/Logomorado.png" alt="">
+            <p>Únete ya</p>
+        </div>
+        <div class="copyright">
+            <p>@2023. Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+
+    <script>document.getElementById('botonplan1').addEventListener('click', function() {
+        Swal.fire({
+          title: 'Modo gratuito',
+          html:  '<p>Has decidido continuar en el modo gratuito, ¿seguro que quieres seguir en este modo?</p>',
+          input: 'label',
+          showConfirmButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Sí',
+          cancelButtonText: 'No',
+          confirmButtonColor: '#6B38BB',
+          cancelButtonColor: '#3C2267',
+          customClass: {
+            container: 'mi-clase-prompt',
+          },
+          buttonStyling: true
+        }).then((result) => {
+          if (result.isConfirmed && result.value) {
+            var planelegido = document.createElement("div");
+            document.body.appendChild(planelegido);
+            Swal.fire('Has escogido este plan', `Seguirás en el modo gratuito "${result.value}"`, 'success');
+          } else if (result.dismiss === Swal.DismissReason.cancel ) {
+            Swal.fire('Operación Cancelada', 'Puedes seguir navegando entre los planes que te ofrecemos, así verás el que mejor se ajuste a tus necesidades.', 'error');
+          }
+        });
+      });
+      
+      document.getElementById('botonplan2').addEventListener('click', function() {
+        Swal.fire({
+          title: 'Basic Mode',
+          html:  '<p>Has decidido continuar en basic mode, para este plan deberás realizar un pago mensual de 200 lempiras. <br> Puedes escoger tu método de pago hasta dentro de 7 días ¿deseas continuar?</p>',
+          input: 'text',
+          showCancelButton: true,
+          confirmButtonText: 'Sí',
+          cancelButtonText: 'No',
+          confirmButtonColor: '#6B38BB',
+          cancelButtonColor: '#3C2267',
+          customClass: {
+            container: 'mi-clase-prompt',
+          },
+          buttonStyling: true
+        }).then((result) => {
+          if (result.isConfirmed && result.value) {
+            var planelegido = document.createElement("div");
+            document.body.appendChild(planelegido);
+            Swal.fire('Has escogido este plan', `Seguirás en basic mode ya que escogiste: "${result.value}"`, 'success');
+          } else if (result.dismiss === Swal.DismissReason.cancel ) {
+            Swal.fire('Operación Cancelada', 'Puedes seguir navegando entre los planes que te ofrecemos, así verás el que mejor se ajuste a tus necesidades.', 'error');
+          }
+        });
+      });
+
+      document.getElementById('botonplan3').addEventListener('click', function() {
+        Swal.fire({
+          title: 'Modo premium',
+          html:  '<p>Has decidido continuar en el modo premium, para este plan deberás realizar un pago mensual de 400 lempiras, ya que contiene mayores ventajas. <br> Puedes escoger tu método de pago hasta dentro de 7 días ¿deseas continuar?</p>',
+          input: 'text',
+          showConfirmButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Sí',
+          cancelButtonText: 'No',
+          confirmButtonColor: '#6B38BB',
+          cancelButtonColor: '#3C2267',
+          customClass: {
+            container: 'mi-clase-prompt',
+          },
+          buttonStyling: true
+        }).then((result) => {
+          if (result.isConfirmed && result.value) {
+            var planelegido = document.createElement("div");
+            document.body.appendChild(planelegido);
+            Swal.fire('Has escogido este plan', `Seguirás en el modo premium, ya que elegiste: "${result.value}"`, 'success');
+          } else if (result.dismiss === Swal.DismissReason.cancel ) {
+            Swal.fire('Operación Cancelada', 'Puedes seguir navegando entre los planes que te ofrecemos, así verás el que mejor se ajuste a tus necesidades.', 'error');
+          }
+        });
+      });
+
+      </script>
+
+    <script src="scripts/script.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+</body>
+</html>

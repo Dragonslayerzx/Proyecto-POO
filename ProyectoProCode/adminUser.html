@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajustes de Usuario</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 60%;
+      margin: 50px auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #555;
+      background-color: #333;
+      color: #fff;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #6b2aee;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #8e5dcc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ajustes de Usuario</h1>
+    <h2>Modificar datos</h2>
+    <form id = userDataAdmin method = "post" action = "/" >
+      <label for="nombre">Nuevo nombre de usuario:</label>
+      <input type="text" id="usuario" name="nombre" placeholder="Usuario" required>
+      <label for="correo">Nuevo correo electronico:</label>
+      <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+      <label for="contrasena">Nueva contraseña:</label>
+      <input type="password" id="password" name="contrasena" placeholder="Contraseña" required>
+      <input type="submit" value="Guardar cambios">
+    </form>
+  </div>
+
+  <script>
+    const formularioAdmin = document.getElementById("userDataAdmin");
+    formularioAdmin.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      
+      let usuario = document.getElementById("usuario").value;
+      let correo = document.getElementById("correo").value;
+      let password = document.getElementById("password").value;
+
+      let userData = { usuario: usuario, correo: correo, password: password };
+      let userDataJson = JSON.stringify(userData);
+      console.log(userData);
+
+      // mandando la transaccion al backend
+      fetch("http://localhost:3000/api/users/admin", {
+        method: "Post",
+        body: userDataJson, //cuerpo de la request
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message === "Credenciales incorrectas") {
+            // Disparar un evento personalizado para manejar el mensaje de error
+            document.dispatchEvent(new CustomEvent("userNotFounded"));
+          } else {
+            // Disparar un evento personalizado para indicar que el usuario se creó correctamente
+            document.dispatchEvent(new CustomEvent("userFounded"));
+          }
+        })
+        .catch((error) => {
+          console.error("Error al procesar la solicitud:", error);
+        });
+    });
+
+  document.addEventListener('userNotFounded', function() {
+    alert('Los datos ingresados no coinciden.');
+  });
+
+  // Escuchar evento 'userCreated' y redirigir a otra página
+  document.addEventListener('userFounded', function() {
+    window.location.href = 'Principal.html';
+  });
+  </script>
+  <script src="scripts/script.js"></script>
+</body>
+</html>

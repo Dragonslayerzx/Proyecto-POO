@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/33c3fc8b29.js" crossorigin="anonymous"></script>
+    <title>Editor</title>
+</head>
+<body style="background-color: black;">
+    <nav id="contenedor-search">
+        <div id="logonav">
+            <div id="logonavprincipal">
+                <div class="logo">
+                    <img src="assets/img/Logomorado.png" alt="">
+                </div>
+                <label for="search" class="search-label">
+                    <div class="lupita">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                    <input type="search" name="" id="search"  placeholder="Buscar en Pro Code" style="color: black;" >
+
+                </label>
+                <div class="opcion-user">
+                <i class="fa-solid fa-circle-user"></i>
+            </div>
+            </div>
+        </nav>
+
+        <section class = "contenedor-archivos">
+            <div class="infoarchivos">
+              <h2 contenteditable="true">Nombre de archivo</h2> 
+              <label for="seleccion">Escoge la herramienta que vas a utilizar:</label>
+              <select id="seleccion">
+                
+                  <option value="opcion1">· HTML</option>
+                  <option value="opcion2">· CSS</option>
+                  <option value="opcion3">· JAVASCRIPT</option>
+              </select>
+              <textarea type="text" id="editor" name="Editor" placeholder="Comienza con tu proyecto"></textarea>
+              </section>
+            
+    
+              <script src="scripts/script.js"></script>  
+</body>
+</html>
